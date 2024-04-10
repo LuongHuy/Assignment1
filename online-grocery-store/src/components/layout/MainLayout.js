@@ -1,4 +1,4 @@
-import { AppShell, Grid } from "@mantine/core";
+import { AppShell, Grid, Image, Flex } from "@mantine/core";
 import Link from "next/link";
 
 const Header = () => {
@@ -6,7 +6,11 @@ const Header = () => {
     <Grid>
       <Grid.Col span={1} />
       <Grid.Col span={10}>
-        <Link href="/">Header</Link>
+        <Link href="/shoppingcart">
+          <Flex align="center" gap="xl">
+            <Image src="Logo.jpg" h={50} w="auto" /> Header
+          </Flex>
+        </Link>
       </Grid.Col>
       <Grid.Col span={1} />
     </Grid>
