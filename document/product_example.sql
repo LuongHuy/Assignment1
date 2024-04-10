@@ -9,7 +9,6 @@ CREATE TABLE `products` (
   `product_id` int(10) unsigned DEFAULT NULL,
   `product_name` varchar(20) DEFAULT NULL,
   `category_name` varchar(20) DEFAULT NULL,
-  `sub_category_name` varchar(20) DEFAULT NULL,
   `unit_price` float(8,2) DEFAULT NULL,
   `unit_quantity` varchar(15) DEFAULT NULL,
   `in_stock` int(10) unsigned DEFAULT NULL
