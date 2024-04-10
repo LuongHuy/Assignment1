@@ -1,5 +1,6 @@
 import "@mantine/core/styles.css";
 import { createTheme, MantineProvider } from "@mantine/core";
+import MainLayout from "@/components/layout/MainLayout";
 
 const theme = createTheme({
   /** Put your mantine theme override here */
@@ -8,7 +9,9 @@ const theme = createTheme({
 export default function App({ Component, pageProps }) {
   return (
     <MantineProvider theme={theme}>
-      <Component {...pageProps} />;
+      <MainLayout>
+        <Component {...pageProps} />;
+      </MainLayout>
     </MantineProvider>
   );
 }
