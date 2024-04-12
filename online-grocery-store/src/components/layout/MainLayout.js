@@ -1,4 +1,5 @@
-import { AppShell, Flex, Grid } from "@mantine/core";
+import { AppShell, Flex, Grid, Image, Input } from "@mantine/core";
+import { AiOutlineSearch } from "react-icons/ai";
 import Link from "next/link";
 import CartIcon from "../cart/CartIcon";
 
@@ -8,7 +9,19 @@ const Header = () => {
       <Grid.Col span={2} />
       <Grid.Col span={8}>
         <Flex h="100%" justify="space-between" align="center">
-          <Link href="/">Header</Link>
+          <Link href="/">
+            <Image radius="md" src="favicon.ico" h={40} w="auto" />
+          </Link>
+          <Input
+            radius="md"
+            placeholder="Search product"
+            w="85%"
+            rightSection={
+              <div onClick={() => console.log("Ok")}>
+                <AiOutlineSearch />
+              </div>
+            }
+          />
           <CartIcon />
         </Flex>
       </Grid.Col>

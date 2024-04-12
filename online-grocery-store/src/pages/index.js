@@ -2,6 +2,7 @@ import ProductCard from "@/components/common/ProductCard";
 import { Box, Center, Container, Grid } from "@mantine/core";
 import { isArray, isEmpty } from "lodash";
 import Head from "next/head";
+import CategoryCard from "../components/common/CategoryCard";
 
 export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:3000/api/getAllProducts");
@@ -21,21 +22,39 @@ export default function Home(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Container>
-        {isArray(products) && !isEmpty(products) ? (
-          <Grid>
-            {products.map((product) => (
-              <Grid.Col key={product.product_id} span={4}>
-                <ProductCard product={product} />
+      <Grid>
+        <Grid.Col span={2}></Grid.Col>
+        <Grid.Col span={8}>
+          <Container fluid>
+            <Grid>
+              <Grid.Col span={4}>
+                <Box bg="red.5" my="xl" style={{ border: "1px solid black" }}>
+                  <div style={{ textAlign: "center", margin: 10 }}>Text</div>
+                  {["A", "B", "C", "D"].map((categoryname) => (
+                    <CategoryCard categoryName={categoryname} />
+                  ))}
+                </Box>
               </Grid.Col>
-            ))}
-          </Grid>
-        ) : (
-          <Center bg="var(--mantine-color-gray-light)">
-            <Box>Network error</Box>
-          </Center>
-        )}
-      </Container>
+              <Grid.Col span={8}>
+                {isArray(products) && !isEmpty(products) ? (
+                  <Grid>
+                    {products.map((product) => (
+                      <Grid.Col key={product.product_id} span={4}>
+                        <ProductCard product={product} />
+                      </Grid.Col>
+                    ))}
+                  </Grid>
+                ) : (
+                  <Center bg="var(--mantine-color-gray-light)">
+                    <Box>Network error</Box>
+                  </Center>
+                )}
+              </Grid.Col>
+            </Grid>
+          </Container>
+        </Grid.Col>
+        <Grid.Col span={2}></Grid.Col>
+      </Grid>
     </>
   );
 }
