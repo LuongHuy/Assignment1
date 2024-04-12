@@ -14,7 +14,7 @@ export const useCart = create((set) => ({
             : item,
         );
       } else {
-        newCart = [...state.cart, product];
+        newCart = [...state.cart, { ...product, quantity: 1 }];
       }
 
       return { cart: newCart };
