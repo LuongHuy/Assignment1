@@ -37,7 +37,7 @@ Open http://localhost:3000 to see the web.
    git checkout "branch_name"
 
 7. Pull from main
-   git pull origin main
+   git pull origin master
 
 8. Create new branch
-   git branch new_branch
+   git branch -b new_branch

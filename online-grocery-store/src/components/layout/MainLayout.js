@@ -9,13 +9,14 @@ const Header = () => {
       <Grid.Col span={2} />
       <Grid.Col span={8}>
         <Flex h="100%" justify="space-between" align="center">
+          <Link href="/">TEACHER'S SHOP</Link>
           <Link href="/">
-            <Image radius="md" src="favicon.ico" h={40} w="auto" />
+            <Image radius="md" src="Logo.jpg" h={50} w="auto" />
           </Link>
           <Input
             radius="md"
             placeholder="Search product"
-            w="85%"
+            w="70%"
             rightSection={
               <div onClick={() => console.log("Ok")}>
                 <AiOutlineSearch />
