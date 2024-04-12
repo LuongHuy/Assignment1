@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
   return (
     <MantineProvider theme={theme}>
       <MainLayout>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </MainLayout>
     </MantineProvider>
   );

@@ -20,20 +20,18 @@ export const useCart = create((set) => ({
       return { cart: newCart };
     }),
 
-  subtractProduct: (product) =>
+  subtractProduct: (id) =>
     set((state) => {
       let newCart;
-      const _item = state.cart.find((item) => item.id === product.id);
+      const _item = state.cart.find((item) => item.id === id);
 
       if (!!_item) {
         if (_item.quantity > 1) {
           newCart = state.cart.map((item) =>
-            item.id === product.id
-              ? { ...item, quantity: item.quantity - 1 }
-              : item,
+            item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
           );
         } else {
-          newCart = [...state.cart].filter((item) => item.id !== product.id);
+          newCart = [...state.cart].filter((item) => item.id !== id);
         }
       } else {
         newCart = state.cart;
@@ -41,6 +39,9 @@ export const useCart = create((set) => ({
 
       return { cart: newCart };
     }),
+
+  removeProduct: (id) =>
+    set((state) => ({ cart: state.cart.filter((item) => item.id !== id) })),
 
   emptyCart: () => set({ cart: [] }),
 }));

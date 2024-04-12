@@ -1,4 +1,4 @@
-import { ActionIcon, Box, Flex, Table, Text } from "@mantine/core";
+import { ActionIcon, Box, CloseButton, Flex, Table, Text } from "@mantine/core";
 
 const QuantityButton = ({ quantity, addProduct, subtractProduct }) => {
   return (
@@ -11,7 +11,7 @@ const QuantityButton = ({ quantity, addProduct, subtractProduct }) => {
 };
 
 const CartList = (props) => {
-  const { cart, addProduct, subtractProduct } = props;
+  const { cart, addProduct, subtractProduct, removeProduct } = props;
 
   const head = (
     <Table.Tr>
@@ -19,6 +19,7 @@ const CartList = (props) => {
       <Table.Th>Name</Table.Th>
       <Table.Th>Quantity</Table.Th>
       <Table.Th>Price</Table.Th>
+      <Table.Th></Table.Th>
     </Table.Tr>
   );
 
@@ -30,10 +31,13 @@ const CartList = (props) => {
         <QuantityButton
           quantity={item.quantity}
           addProduct={() => addProduct(item)}
-          subtractProduct={() => subtractProduct(item)}
+          subtractProduct={() => subtractProduct(item.id)}
         />
       </Table.Td>
       <Table.Td>{item.price}</Table.Td>
+      <Table.Td>
+        <CloseButton onClick={() => removeProduct(item.id)} />
+      </Table.Td>
     </Table.Tr>
   ));
 

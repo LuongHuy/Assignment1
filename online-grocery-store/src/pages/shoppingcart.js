@@ -5,9 +5,8 @@ import { Box, Button, Container, Grid, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
 const ShoppingCart = () => {
-  const { cart, addProduct, subtractProduct, emptyCart } = useCart(
-    (state) => state,
-  );
+  const { cart, addProduct, subtractProduct, removeProduct, emptyCart } =
+    useCart((state) => state);
 
   const [isOpened, { open, close }] = useDisclosure(false);
 
@@ -24,6 +23,7 @@ const ShoppingCart = () => {
                     cart={cart}
                     addProduct={addProduct}
                     subtractProduct={subtractProduct}
+                    removeProduct={removeProduct}
                   />
                 </Grid.Col>
                 <Grid.Col span={4}>

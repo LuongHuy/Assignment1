@@ -26,9 +26,9 @@ export default function Home(props) {
       </Head>
       <main>
         <Button onClick={() => addProduct({ id: 1 })}>Add P1</Button>
-        <Button onClick={() => subtractProduct({ id: 1 })}>Subtract P1</Button>
+        <Button onClick={() => subtractProduct(1)}>Subtract P1</Button>
         <Button onClick={() => addProduct({ id: 2 })}>Add P2</Button>
-        <Button onClick={() => subtractProduct({ id: 2 })}>Subtract P2</Button>
+        <Button onClick={() => subtractProduct(2)}>Subtract P2</Button>
         <Button onClick={() => emptyCart()}>Empty</Button>
       </main>
     </>
