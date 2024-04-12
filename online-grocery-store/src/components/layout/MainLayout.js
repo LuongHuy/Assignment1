@@ -1,14 +1,18 @@
-import { AppShell, Grid } from "@mantine/core";
+import { AppShell, Flex, Grid } from "@mantine/core";
 import Link from "next/link";
+import CartIcon from "../cart/CartIcon";
 
 const Header = () => {
   return (
     <Grid>
-      <Grid.Col span={1} />
-      <Grid.Col span={10}>
-        <Link href="/">Header</Link>
+      <Grid.Col span={2} />
+      <Grid.Col span={8}>
+        <Flex h="100%" justify="space-between" align="center">
+          <Link href="/">Header</Link>
+          <CartIcon />
+        </Flex>
       </Grid.Col>
-      <Grid.Col span={1} />
+      <Grid.Col span={2} />
     </Grid>
   );
 };
@@ -26,7 +30,7 @@ const Footer = () => {
 const MainLayout = ({ children }) => {
   return (
     <AppShell>
-      <AppShell.Header style={{ position: "inherit" }}>
+      <AppShell.Header style={{ position: "inherit", height: 70 }}>
         <Header />
       </AppShell.Header>
 

@@ -11,7 +11,8 @@ const theme = createTheme({
     }),
     Grid: Grid.extend({
       styles: {
-        inner: { margin: 0, width: "auto" },
+        root: { height: "100%" },
+        inner: { margin: 0, width: "auto", height: "100%" },
       },
     }),
   },
