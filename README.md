@@ -28,3 +28,16 @@ Open http://localhost:8080 -> use **root/root** to login -> import sql file in d
 4. Open web
 
 Open http://localhost:3000 to see the web.
+
+5. Git Commit -> Git Push
+   git commit -m""
+   git push origin "branch_name"
+
+6. Change branch
+   git checkout "branch_name"
+
+7. Pull from main
+   git pull origin main
+
+8. Create new branch
+   git branch new_branch
