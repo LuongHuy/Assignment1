@@ -3,11 +3,11 @@ import { Box, Center, Container, Grid, Autocomplete } from "@mantine/core";
 import { isArray, isEmpty } from "lodash";
 import Head from "next/head";
 import CategoryCard from "../components/common/CategoryCard";
+import { useState } from "react";
 
 export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:3000/api/getAllProducts");
   const products = await res.json();
-
   return { props: { products } };
 };
 
@@ -16,6 +16,11 @@ export default function Home(props) {
   const categories = Array.from(
     new Set(products.map((product) => product.category)),
   );
+  const [category, setCategory] = useState("Show All");
+  const filterProducts =
+    category === "Show All"
+      ? products
+      : products.filter((product) => product.category === category);
 
   return (
     <>
@@ -43,21 +48,20 @@ export default function Home(props) {
                     }}
                   >
                     <div style={{ alignSelf: "center" }}>
-                      {categories.map((categoryname) => (
-                        <CategoryCard categoryName={categoryname} />
+                      {[...categories, "Show All"].map((categoryname) => (
+                        <div onClick={() => setCategory(categoryname)}>
+                          <CategoryCard categoryName={categoryname} />
+                        </div>
                       ))}
                     </div>
                   </Box>
-                  <div style={{ textAlign: "center", margin: 10 }}>
-                    Show All
-                  </div>
                 </Box>
               </Grid.Col>
               <Grid.Col span={10}>
                 <div style={{ margin: 10 }}>Category - A</div>
                 {isArray(products) && !isEmpty(products) ? (
                   <Grid>
-                    {products.map((product) => (
+                    {filterProducts.map((product) => (
                       <Grid.Col key={product.product_id} span={4}>
                         <ProductCard product={product} />
                       </Grid.Col>
