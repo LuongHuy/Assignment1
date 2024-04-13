@@ -9,20 +9,14 @@ const Header = () => {
       <Grid.Col span={2} />
       <Grid.Col span={8}>
         <Flex h="100%" justify="space-between" align="center">
-          <Link href="/">TEACHER'S SHOP</Link>
           <Link href="/">
             <Image radius="md" src="Logo.jpg" h={50} w="auto" />
+            TEACHER'S SHOP
           </Link>
-          <Input
-            radius="md"
-            placeholder="Search product"
-            w="70%"
-            rightSection={
-              <div onClick={() => console.log("Ok")}>
-                <AiOutlineSearch />
-              </div>
-            }
-          />
+          <Input radius="md" placeholder="Search product" w="75%" />
+          <button onclick="myFunction()">
+            <AiOutlineSearch />
+          </button>
           <CartIcon />
         </Flex>
       </Grid.Col>

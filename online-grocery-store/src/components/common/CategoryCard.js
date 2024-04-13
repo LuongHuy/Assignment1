@@ -2,16 +2,9 @@ import { Box } from "@mantine/core";
 
 const CategoryCard = ({ categoryName }) => {
   return (
-    <Box
-      my="xl"
-      style={{
-        backgroundColor: "green",
-        border: "1px solid black",
-        margin: 20,
-      }}
-    >
+    <button onclick="myFunction()" style={{ width: 100, margin: 20 }}>
       {categoryName}
-    </Box>
+    </button>
   );
 };
 export default CategoryCard;

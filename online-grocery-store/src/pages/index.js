@@ -1,5 +1,5 @@
 import ProductCard from "@/components/common/ProductCard";
-import { Box, Center, Container, Grid } from "@mantine/core";
+import { Box, Center, Container, Grid, Autocomplete } from "@mantine/core";
 import { isArray, isEmpty } from "lodash";
 import Head from "next/head";
 import CategoryCard from "../components/common/CategoryCard";
@@ -27,15 +27,31 @@ export default function Home(props) {
         <Grid.Col span={8}>
           <Container fluid>
             <Grid>
-              <Grid.Col span={4}>
-                <Box bg="red.5" my="xl" style={{ border: "1px solid black" }}>
-                  <div style={{ textAlign: "center", margin: 10 }}>Text</div>
-                  {["A", "B", "C", "D"].map((categoryname) => (
-                    <CategoryCard categoryName={categoryname} />
-                  ))}
+              <Grid.Col span={2}>
+                <Box my="xl" style={{ border: "1px solid black" }}>
+                  <div style={{ textAlign: "center", margin: 10 }}>
+                    Category List
+                  </div>
+                  <Box
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <div style={{ alignSelf: "center" }}>
+                      {["A", "B", "C", "D"].map((categoryname) => (
+                        <CategoryCard categoryName={categoryname} />
+                      ))}
+                    </div>
+                  </Box>
+                  <div style={{ textAlign: "center", margin: 10 }}>
+                    Show All
+                  </div>
                 </Box>
               </Grid.Col>
-              <Grid.Col span={8}>
+              <Grid.Col span={10}>
+                <div style={{ margin: 10 }}>Category - A</div>
                 {isArray(products) && !isEmpty(products) ? (
                   <Grid>
                     {products.map((product) => (
