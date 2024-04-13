@@ -12,7 +12,6 @@ const ProductCard = (props) => {
   const { product } = props;
 
   const isInStock = product.in_stock > 0;
-
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Card.Section>
@@ -42,8 +41,7 @@ const ProductCard = (props) => {
       </Text>
 
       <Text size="sm" c="dimmed">
-        With Fjord Tours you can explore more of the magical fjord landscapes
-        with tours and activities on and around the fjords of Norway
+        {product.description}
       </Text>
 
       <Button color="blue" fullWidth mt="md" radius="md">

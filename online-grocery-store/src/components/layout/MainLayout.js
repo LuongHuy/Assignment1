@@ -10,8 +10,10 @@ const Header = () => {
       <Grid.Col span={8}>
         <Flex h="100%" justify="space-between" align="center">
           <Link href="/">
-            <Image radius="md" src="Logo.jpg" h={50} w="auto" />
-            TEACHER'S SHOP
+            <Flex h="100%" justify="space-between" align="center" gap={10}>
+              <Image radius="md" src="Logo.jpg" h={50} w="auto" />
+              TEACHER'S SHOP
+            </Flex>
           </Link>
           <Input radius="md" placeholder="Search product" w="75%" />
           <button onclick="myFunction()">

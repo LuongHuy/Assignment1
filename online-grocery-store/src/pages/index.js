@@ -13,6 +13,9 @@ export const getServerSideProps = async () => {
 
 export default function Home(props) {
   const { products } = props;
+  const categories = Array.from(
+    new Set(products.map((product) => product.category)),
+  );
 
   return (
     <>
@@ -40,7 +43,7 @@ export default function Home(props) {
                     }}
                   >
                     <div style={{ alignSelf: "center" }}>
-                      {["A", "B", "C", "D"].map((categoryname) => (
+                      {categories.map((categoryname) => (
                         <CategoryCard categoryName={categoryname} />
                       ))}
                     </div>
