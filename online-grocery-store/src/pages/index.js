@@ -48,11 +48,15 @@ export default function Home(props) {
                     }}
                   >
                     <div style={{ alignSelf: "center" }}>
-                      {[...categories, "Show All"].map((categoryname) => (
-                        <div onClick={() => setCategory(categoryname)}>
-                          <CategoryCard categoryName={categoryname} />
-                        </div>
-                      ))}
+                      {[...categories, "Show All"].map(
+                        (
+                          categoryname, // Add element Show All in the categories array. The "..." means all the element in the array
+                        ) => (
+                          <div onClick={() => setCategory(categoryname)}>
+                            <CategoryCard categoryName={categoryname} />
+                          </div>
+                        ),
+                      )}
                     </div>
                   </Box>
                 </Box>
