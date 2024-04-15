@@ -41,3 +41,6 @@ Open http://localhost:3000 to see the web.
 
 8. Create new branch
    git branch -b new_branch
+
+9. Commit all
+   git add .
