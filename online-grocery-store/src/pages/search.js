@@ -1,18 +1,15 @@
+import { useState, useEffect } from "react";
 import ProductCard from "@/components/common/ProductCard";
-import { Box, Center, Container, Grid, Autocomplete } from "@mantine/core";
+import { Box, Center, Container, Grid } from "@mantine/core";
 import { isArray, isEmpty } from "lodash";
 import Head from "next/head";
 import CategoryCard from "../components/common/CategoryCard";
-import { useState } from "react";
+import { useRouter } from "next/router";
 
-export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:3000/api/getAllProducts");
-  const products = await res.json();
-  return { props: { products } };
-};
-
-export default function Home(props) {
-  const { products } = props;
+const SearchPage = () => {
+  const router = useRouter();
+  const { query } = router.query;
+  const [products, setProducts] = useState([]);
   const categories = Array.from(
     new Set(products.map((product) => product.category)),
   );
@@ -22,6 +19,20 @@ export default function Home(props) {
       ? products
       : products.filter((product) => product.category === category);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/findProducts?query=${query}`,
+        );
+        const products = await response.json();
+        setProducts(products);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, [query]);
   return (
     <>
       <Head>
@@ -73,7 +84,7 @@ export default function Home(props) {
                   </Grid>
                 ) : (
                   <Center bg="var(--mantine-color-gray-light)">
-                    <Box>Network error</Box>
+                    <Box>No Item Found</Box>
                   </Center>
                 )}
               </Grid.Col>
@@ -84,4 +95,5 @@ export default function Home(props) {
       </Grid>
     </>
   );
-}
+};
+export default SearchPage;

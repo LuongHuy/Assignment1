@@ -10,13 +10,12 @@ import {
 
 const ProductCard = (props) => {
   const { product } = props;
-
   const isInStock = product.in_stock > 0;
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Card.Section>
         <Image
-          src="/product-img/product-img-1.jpg"
+          src={"/product-img/" + product.product_id + ".jpg"}
           height={260}
           alt={product.product_name}
           fit="contain"
