@@ -30,7 +30,7 @@ const CartList = (props) => {
       <Table.Td>
         <QuantityButton
           quantity={item.quantity}
-          addProduct={(() => addProduct(item), 1)}
+          addProduct={() => addProduct(item, 1)}
           subtractProduct={() => subtractProduct(item.id)}
         />
       </Table.Td>
