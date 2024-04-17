@@ -7,9 +7,11 @@ import {
   NumberFormatter,
   Text,
 } from "@mantine/core";
+import { useRouter } from "next/router";
 
 const ProductCard = (props) => {
   const { product } = props;
+  const router = useRouter();
   const isInStock = product.in_stock > 0;
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -43,7 +45,13 @@ const ProductCard = (props) => {
         {product.description}
       </Text>
 
-      <Button color="blue" fullWidth mt="md" radius="md">
+      <Button
+        color="blue"
+        fullWidth
+        mt="md"
+        radius="md"
+        onClick={() => router.push(`/product/${product.product_id}`)}
+      >
         View
       </Button>
     </Card>
