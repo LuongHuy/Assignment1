@@ -18,7 +18,6 @@ const ProductPage = () => {
   const addProduct = useCart((state) => state.addProduct);
   const cart = useCart((state) => state.cart);
   const [quantity, setQuantity] = useState(0);
-  console.log(cart);
   const [product, setProduct] = useState();
   const router = useRouter();
   const { product_id } = router.query;
@@ -38,12 +37,12 @@ const ProductPage = () => {
   }, [router.query]);
   const decreaseQuantity = () => {
     if (quantity > 0) {
-      setQuantity(quantity - 1);
+      setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
 
   const increaseQuantity = () => {
-    setQuantity(quantity + 1);
+    setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
   return (
