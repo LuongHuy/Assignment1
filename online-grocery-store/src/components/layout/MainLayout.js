@@ -43,7 +43,9 @@ const Footer = () => {
   return (
     <Grid>
       <Grid.Col span={1} />
-      <Grid.Col span={10}>Footer</Grid.Col>
+      <Grid.Col span={10}>
+        Ngoc Huy Luong - 25407762 - Internet Programming
+      </Grid.Col>
       <Grid.Col span={1} />
     </Grid>
   );
