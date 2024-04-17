@@ -45,9 +45,3 @@ export const useCart = create((set) => ({
 
   emptyCart: () => set({ cart: [] }),
 }));
-
-export const useProduct = create((set) => ({
-  products: [],
-
-  setProduct: (products) => set({ products }),
-}));

@@ -36,9 +36,7 @@ const ProductPage = () => {
     fetchData();
   }, [router.query]);
   const decreaseQuantity = () => {
-    if (quantity > 0) {
-      setQuantity((prevQuantity) => prevQuantity - 1);
-    }
+    setQuantity((prevQuantity) => (prevQuantity > 0 ? prevQuantity - 1 : 0));
   };
 
   const increaseQuantity = () => {
@@ -99,7 +97,7 @@ const ProductPage = () => {
               {quantity}
               <Button
                 size="sm"
-                onClick={increaseQuantity}
+                onClick={() => increaseQuantity()}
                 ml="lg"
                 style={{ backgroundColor: "#50BEFE" }}
               >
