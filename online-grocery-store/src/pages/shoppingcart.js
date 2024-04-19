@@ -50,8 +50,9 @@ const ShoppingCart = () => {
         <Box>
           <Button
             onClick={() => {
+              emptyCart();
               close();
-              router.push("/confirmation_page");
+              router.push("/confirmation");
             }}
           >
             Place an Order
