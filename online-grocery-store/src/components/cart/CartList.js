@@ -1,4 +1,13 @@
-import { ActionIcon, Box, CloseButton, Flex, Table, Text } from "@mantine/core";
+import {
+  ActionIcon,
+  Box,
+  CloseButton,
+  Flex,
+  Table,
+  Text,
+  Image,
+  NumberFormatter,
+} from "@mantine/core";
 
 const QuantityButton = ({ quantity, addProduct, subtractProduct }) => {
   return (
@@ -25,18 +34,30 @@ const CartList = (props) => {
 
   const rows = cart.map((item) => (
     <Table.Tr>
-      <Table.Td>Image</Table.Td>
-      <Table.Td>{item.name}</Table.Td>
+      <Table.Td>
+        <Image
+          src={"/product-img/" + item.product_id + ".jpg"}
+          height={100}
+          fit="contain"
+        />
+      </Table.Td>
+      <Table.Td>{item.product_name}</Table.Td>
       <Table.Td>
         <QuantityButton
           quantity={item.quantity}
           addProduct={() => addProduct(item, 1)}
-          subtractProduct={() => subtractProduct(item.id)}
+          subtractProduct={() => subtractProduct(item.product_id)}
         />
       </Table.Td>
-      <Table.Td>{item.price}</Table.Td>
       <Table.Td>
-        <CloseButton onClick={() => removeProduct(item.id)} />
+        <NumberFormatter
+          prefix="$"
+          value={(item.unit_price * item.quantity).toFixed(2)}
+          thousandSeparator
+        />
+      </Table.Td>
+      <Table.Td>
+        <CloseButton onClick={() => removeProduct(item.product_id)} />
       </Table.Td>
     </Table.Tr>
   ));

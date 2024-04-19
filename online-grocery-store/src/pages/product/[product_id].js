@@ -9,6 +9,7 @@ import {
   NumberFormatter,
   Button,
   Flex,
+  Divider,
 } from "@mantine/core";
 import { useCart } from "../../store/store";
 import { Rating } from "@mantine/core";
@@ -91,6 +92,7 @@ const ProductPage = () => {
                 style={{
                   backgroundColor: quantity === 0 ? "#DCDFE1" : "#50BEFE",
                 }}
+                disabled={quantity === 0}
               >
                 -
               </Button>
@@ -129,27 +131,29 @@ const ProductPage = () => {
                   thousandSeparator
                 />
               </h3>
-              <p></p>
-              <Button
-                bg="green"
-                my="xl"
-                size="lg"
-                onClick={() => {
-                  addProduct(product, quantity);
-                }}
-              >
-                Add to cart
-              </Button>
-              <div>
-                <Button bg="red.5" my="xl" size="lg">
-                  <Link
-                    href="/shoppingcart"
-                    style={{ color: "white", textDecoration: "none" }}
-                  >
-                    Check Out
-                  </Link>
+              <Divider my="md" />
+              <Flex direction="column">
+                <Button
+                  bg={quantity === 0 ? "#DCDFE1" : "green"}
+                  my="md"
+                  size="lg"
+                  onClick={() => {
+                    addProduct(product, quantity);
+                  }}
+                  disabled={quantity === 0}
+                >
+                  Add to cart
                 </Button>
-              </div>
+
+                <Button
+                  bg="red.5"
+                  my="xl"
+                  size="lg"
+                  onClick={() => router.push("/shoppingcart")}
+                >
+                  Check Out
+                </Button>
+              </Flex>
             </Box>
           </Grid.Col>
           <Grid.Col span={1}></Grid.Col>
