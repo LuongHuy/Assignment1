@@ -4,12 +4,14 @@ import { useCart } from "@/store/store";
 import { Box, Button, Container, Grid, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 const ShoppingCart = () => {
   const { cart, addProduct, subtractProduct, removeProduct, emptyCart } =
     useCart((state) => state);
 
   const [isOpened, { open, close }] = useDisclosure(false);
+  const router = useRouter();
 
   return (
     <>
@@ -44,8 +46,16 @@ const ShoppingCart = () => {
       </Container>
 
       <Modal opened={isOpened} onClose={close} title="Delivery Information">
+        <Box>Form</Box>
         <Box>
-          <Button>Place an Order</Button>
+          <Button
+            onClick={() => {
+              close();
+              router.push("/confirmation_page");
+            }}
+          >
+            Place an Order
+          </Button>
         </Box>
       </Modal>
     </>
