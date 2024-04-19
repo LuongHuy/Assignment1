@@ -1,4 +1,11 @@
-import { Box, Button, Divider, Flex, Text } from "@mantine/core";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Text,
+  NumberFormatter,
+} from "@mantine/core";
 import { isEmpty } from "lodash";
 
 const CartConfirm = (props) => {
@@ -15,27 +22,25 @@ const CartConfirm = (props) => {
           </Flex>
         ) : (
           <>
-            {cart.map((item) => (
-              <Text>
-                {item.name}: {item.price}
-              </Text>
-            ))}
-
-            <Divider />
-
             <Text>
               Total price:{" "}
-              {cart.reduce(
-                (acc, curr) => acc + curr.unit_price * curr.quantity,
-                0,
-              )}
+              <NumberFormatter
+                prefix="$"
+                value={cart
+                  .reduce(
+                    (acc, curr) => acc + curr.unit_price * curr.quantity,
+                    0,
+                  )
+                  .toFixed(2)}
+                thousandSeparator
+              />
             </Text>
           </>
         )}
       </Box>
 
       <Flex justify="center">
-        <Button onClick={openConfirmation} /* disabled={isEmpty(cart)} */>
+        <Button onClick={openConfirmation} disabled={isEmpty(cart)}>
           Buy Now
         </Button>
       </Flex>
