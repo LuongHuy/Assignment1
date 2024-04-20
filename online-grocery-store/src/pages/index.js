@@ -52,7 +52,10 @@ export default function Home(props) {
                         (
                           categoryname, // Add element Show All in the categories array. The "..." means all the element in the array
                         ) => (
-                          <div onClick={() => setCategory(categoryname)}>
+                          <div
+                            key={categoryname}
+                            onClick={() => setCategory(categoryname)}
+                          >
                             <CategoryCard categoryName={categoryname} />
                           </div>
                         ),
