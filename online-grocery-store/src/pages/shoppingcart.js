@@ -1,10 +1,11 @@
 import CartConfirm from "@/components/cart/CartConfirm";
 import CartList from "@/components/cart/CartList";
 import { useCart } from "@/store/store";
-import { Box, Button, Container, Grid, Modal } from "@mantine/core";
+import { Box, Container, Grid, Modal, Text, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import InfomationCheck from "../components/cart/InfomationConfirm";
 
 const ShoppingCart = () => {
   const { cart, addProduct, subtractProduct, removeProduct, emptyCart } =
@@ -46,18 +47,13 @@ const ShoppingCart = () => {
       </Container>
 
       <Modal opened={isOpened} onClose={close} title="Delivery Information">
-        <Box>Form</Box>
-        <Box>
-          <Button
-            onClick={() => {
-              emptyCart();
-              close();
-              router.push("/confirmation");
-            }}
-          >
-            Place an Order
-          </Button>
-        </Box>
+        <InfomationCheck
+          onSubmit={() => {
+            emptyCart();
+            close();
+            router.push("/confirmation");
+          }}
+        />
       </Modal>
     </>
   );
