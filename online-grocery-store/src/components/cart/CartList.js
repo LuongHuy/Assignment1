@@ -33,7 +33,7 @@ const CartList = (props) => {
   );
 
   const rows = cart.map((item) => (
-    <Table.Tr>
+    <Table.Tr key={item.product_id}>
       <Table.Td>
         <Image
           src={"/product-img/" + item.product_id + ".jpg"}
