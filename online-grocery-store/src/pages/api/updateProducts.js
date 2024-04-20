@@ -33,6 +33,7 @@ export default async function handler(req, res) {
       );
     });
     Promise.all(queries);
+    return res.send("ok");
   } catch (e) {
     return res.send(e);
   }

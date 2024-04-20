@@ -49,12 +49,12 @@ const ShoppingCart = () => {
       <Modal opened={isOpened} onClose={close} title="Delivery Information">
         <InfomationCheck
           onSubmit={async () => {
-            emptyCart();
-            close();
             await fetch("/api/updateProducts", {
               method: "POST",
               body: JSON.stringify(cart),
             });
+            emptyCart();
+            close();
             router.push("/confirmation");
           }}
         />
