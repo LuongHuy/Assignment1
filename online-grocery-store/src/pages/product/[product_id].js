@@ -21,6 +21,7 @@ const ProductPage = () => {
   const [quantity, setQuantity] = useState(0);
   const [product, setProduct] = useState();
   const router = useRouter();
+  const isInStock = !!product ? product.in_stock > 0 : false;
   const { product_id } = router.query;
   useEffect(() => {
     const fetchData = async () => {
