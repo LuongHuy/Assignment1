@@ -83,6 +83,9 @@ const ProductPage = () => {
               </h1>
             </Text>
             <Text size="lg" my="lg">
+              {product.in_stock}
+            </Text>
+            <Text size="lg" my="lg">
               Input item quantity
             </Text>
             <Flex align="center">

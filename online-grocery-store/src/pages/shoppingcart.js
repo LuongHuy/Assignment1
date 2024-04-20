@@ -48,9 +48,13 @@ const ShoppingCart = () => {
 
       <Modal opened={isOpened} onClose={close} title="Delivery Information">
         <InfomationCheck
-          onSubmit={() => {
+          onSubmit={async () => {
             emptyCart();
             close();
+            await fetch("/api/updateProducts", {
+              method: "POST",
+              body: JSON.stringify(cart),
+            });
             router.push("/confirmation");
           }}
         />

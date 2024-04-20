@@ -6,7 +6,6 @@ export const useCart = create((set) => ({
   addProduct: (product, quantity) =>
     set((state) => {
       let newCart;
-      console.log(product);
 
       if (state.cart.some((item) => item.product_id === product.product_id)) {
         newCart = state.cart.map((item) =>
