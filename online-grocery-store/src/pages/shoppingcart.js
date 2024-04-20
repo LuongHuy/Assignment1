@@ -49,8 +49,6 @@ const ShoppingCart = () => {
       <Modal opened={isOpened} onClose={close} title="Delivery Information">
         <InfomationCheck
           onSubmit={async () => {
-            emptyCart();
-            close();
             await fetch(
               `http://${process.env.NEXT_PUBLIC_HOST}:${process.env.NEXT_PUBLIC_PORT}/api/updateProducts`,
               {
@@ -58,6 +56,8 @@ const ShoppingCart = () => {
                 body: JSON.stringify(cart),
               },
             );
+            emptyCart();
+            close();
             router.push("/confirmation");
           }}
         />
