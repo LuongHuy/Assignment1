@@ -51,10 +51,13 @@ const ShoppingCart = () => {
           onSubmit={async () => {
             emptyCart();
             close();
-            await fetch("/api/updateProducts", {
-              method: "POST",
-              body: JSON.stringify(cart),
-            });
+            await fetch(
+              `http://${process.env.NEXT_PUBLIC_HOST}:${process.env.NEXT_PUBLIC_PORT}/api/updateProducts`,
+              {
+                method: "POST",
+                body: JSON.stringify(cart),
+              },
+            );
             router.push("/confirmation");
           }}
         />

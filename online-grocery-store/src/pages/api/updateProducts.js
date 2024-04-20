@@ -11,10 +11,6 @@ export default async function handler(req, res) {
         },
       },
     });
-    //products.forEach((product)=> await product.decrement("in_stock",{by:(data.find(item=>item.product_id===product.product_id)).quantity}))
-    // products.forEach((product) => {
-    //  await product.decrement("in_stock",{by:data.find(item =>item.product_id===product.product_id).quantity})
-    // })
   } catch (e) {
     return res.send(e);
   }
