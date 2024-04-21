@@ -19,7 +19,7 @@ const Header = () => {
           <Link href="/">
             <Flex h="100%" justify="space-between" align="center" gap={10}>
               <Image radius="md" src="Logo.jpg" h={50} w="auto" />
-              TEACHER'S SHOP
+              Red Fox Store
             </Flex>
           </Link>
           <Input

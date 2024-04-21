@@ -3,6 +3,7 @@ import { useState } from "react";
 import { TextInput, Box, Flex, Button, Select, Text } from "@mantine/core";
 
 const InfomationCheck = ({ onSubmit }) => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
@@ -14,12 +15,25 @@ const InfomationCheck = ({ onSubmit }) => {
   const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
 
   const hasError =
-    !emailRegex.test(email) || !phoneNumber || !address || !city || !region;
+    !name ||
+    !emailRegex.test(email) ||
+    !phoneNumber ||
+    !address ||
+    !city ||
+    !region;
 
   return (
     <Box>
       <Text>Fill the correct information in the boxes</Text>
       <Flex direction="column" my="lg">
+        <TextInput
+          required
+          label="Name"
+          type="name"
+          placeholder="Enter your name"
+          value={name}
+          onChange={(event) => setName(event.currentTarget.value)}
+        />
         <TextInput
           required
           label="Email"
