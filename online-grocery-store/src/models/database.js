@@ -5,8 +5,8 @@ export const sequelize = new Sequelize(
   process.env.NEXT_PUBLIC_DB_NAME,
   process.env.NEXT_PUBLIC_DB_PASSWORD,
   {
-    host: process.env.NEXT_PUBLIC_HOST,
-    port: process.env.NEXT_PUBLIC_DB_HOST,
+    host: process.env.NEXT_PUBLIC_DB_HOST,
+    port: process.env.NEXT_PUBLIC_DB_PORT,
     dialect: "mysql",
   },
 );

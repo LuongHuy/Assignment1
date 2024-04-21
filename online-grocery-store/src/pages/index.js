@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export const getServerSideProps = async () => {
   const res = await fetch(
-    `http://${process.env.NEXT_PUBLIC_HOST}:${process.env.NEXT_PUBLIC_PORT}/api/getAllProducts`,
+    `http://${process.env.NEXT_PUBLIC_HOST}/api/getAllProducts`,
   );
   const products = await res.json();
   return { props: { products } };

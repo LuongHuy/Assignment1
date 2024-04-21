@@ -50,7 +50,7 @@ const ShoppingCart = () => {
         <InfomationCheck
           onSubmit={async () => {
             await fetch(
-              `http://${process.env.NEXT_PUBLIC_HOST}:${process.env.NEXT_PUBLIC_PORT}/api/updateProducts`,
+              `http://${process.env.NEXT_PUBLIC_HOST}/api/updateProducts`,
               {
                 method: "POST",
                 body: JSON.stringify(cart),

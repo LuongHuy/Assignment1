@@ -28,7 +28,7 @@ const ProductPage = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://${process.env.NEXT_PUBLIC_HOST}:${process.env.NEXT_PUBLIC_PORT}/api/getProduct?product_id=${product_id}`,
+          `http://${process.env.NEXT_PUBLIC_HOST}/api/getProduct?product_id=${product_id}`,
         );
         const product = await response.json();
         setProduct(product);

@@ -20,10 +20,13 @@ const CartConfirm = (props) => {
   const isCartEmpty = isEmpty(cart);
 
   const handleBuyNow = async () => {
-    const _products = await fetch("/api/getProductsByID", {
-      method: "POST",
-      body: JSON.stringify(cart.map((product) => product.product_id)),
-    });
+    const _products = await fetch(
+      `http://${process.env.NEXT_PUBLIC_HOST}/api/getProductsByID`,
+      {
+        method: "POST",
+        body: JSON.stringify(cart.map((product) => product.product_id)),
+      },
+    );
     const products = await _products.json();
 
     for (const product of cart) {

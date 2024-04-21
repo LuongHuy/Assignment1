@@ -23,7 +23,7 @@ const SearchPage = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://${process.env.NEXT_PUBLIC_HOST}:${process.env.NEXT_PUBLIC_PORT}/api/findProducts?query=${query}`,
+          `http://${process.env.NEXT_PUBLIC_HOST}/api/findProducts?query=${query}`,
         );
         const products = await response.json();
         setProducts(products);
@@ -63,7 +63,10 @@ const SearchPage = () => {
                         (
                           categoryname, // Add element Show All in the categories array. The "..." means all the element in the array
                         ) => (
-                          <div onClick={() => setCategory(categoryname)}>
+                          <div
+                            key={categoryname}
+                            onClick={() => setCategory(categoryname)}
+                          >
                             <CategoryCard categoryName={categoryname} />
                           </div>
                         ),
