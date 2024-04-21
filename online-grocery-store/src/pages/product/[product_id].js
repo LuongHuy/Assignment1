@@ -10,6 +10,7 @@ import {
   Button,
   Flex,
   Divider,
+  Badge,
 } from "@mantine/core";
 import { useCart } from "../../store/store";
 import { Rating } from "@mantine/core";
@@ -73,7 +74,7 @@ const ProductPage = () => {
               <Rating value={3.5} fractions={2} readOnly />
             </h1>
             <Text>
-              <p style={{ textDecoration: "underline" }}>Price</p>
+              <p style={{ textDecoration: "underline" }}>Price/unit</p>
               <h1>
                 <NumberFormatter
                   prefix="$"
@@ -83,7 +84,11 @@ const ProductPage = () => {
               </h1>
             </Text>
             <Text size="lg" my="lg">
-              {product.in_stock}
+              Available in-stock: {product.in_stock}
+              <p></p>
+              <Badge color={product.in_stock > 0 ? "blue" : "gray"}>
+                {product.in_stock > 0 ? "In Stock" : "Out of Stock"}
+              </Badge>
             </Text>
             <Text size="lg" my="lg">
               Input item quantity
