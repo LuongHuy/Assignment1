@@ -14,7 +14,6 @@ import {
 } from "@mantine/core";
 import { useCart } from "../../store/store";
 import { Rating } from "@mantine/core";
-import Link from "next/link";
 
 const ProductPage = () => {
   const addProduct = useCart((state) => state.addProduct);
@@ -37,7 +36,8 @@ const ProductPage = () => {
       }
     };
     fetchData();
-  }, [router.query]);
+  }, [router.query, product_id]);
+
   const decreaseQuantity = () => {
     setQuantity((prevQuantity) => (prevQuantity > 0 ? prevQuantity - 1 : 0));
   };
@@ -59,6 +59,7 @@ const ProductPage = () => {
           <Grid.Col span={1}></Grid.Col>
           <Grid.Col span={3}>
             <Image
+              alt={product.product_name}
               src={"/product-img/" + product.product_id + ".jpg"}
               height={260}
               fit="contain"

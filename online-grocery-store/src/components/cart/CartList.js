@@ -37,6 +37,7 @@ const CartList = (props) => {
       <Table.Td>
         <Image
           src={"/product-img/" + item.product_id + ".jpg"}
+          alt={item.product_name}
           height={100}
           fit="contain"
         />

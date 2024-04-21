@@ -18,7 +18,7 @@ const Header = () => {
         <Flex h="100%" justify="space-between" align="center">
           <Link href="/">
             <Flex h="100%" justify="space-between" align="center" gap={10}>
-              <Image radius="md" src="Logo.jpg" h={50} w="auto" />
+              <Image radius="md" alt="logo" src="Logo.jpg" h={50} w="auto" />
               Red Fox Store
             </Flex>
           </Link>

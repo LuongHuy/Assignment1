@@ -11,7 +11,7 @@ const CartIcon = () => {
   return (
     <Indicator label={quantity} size={20}>
       <Link href="/shoppingcart">
-        <Image h={40} w="auto" src="/cart-icon.svg" />
+        <Image h={40} w="auto" alt="cart" src="/cart-icon.svg" />
       </Link>
     </Indicator>
   );
