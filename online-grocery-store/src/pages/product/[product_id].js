@@ -14,6 +14,7 @@ import {
 } from "@mantine/core";
 import { useCart } from "../../store/store";
 import { Rating } from "@mantine/core";
+import { NEXT_PUBLIC_HOST } from "@/env/env";
 
 const ProductPage = () => {
   const addProduct = useCart((state) => state.addProduct);
@@ -27,7 +28,7 @@ const ProductPage = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://${process.env.NEXT_PUBLIC_HOST}/api/getProduct?product_id=${product_id}`,
+          `${NEXT_PUBLIC_HOST}/api/getProduct?product_id=${product_id}`,
         );
         const product = await response.json();
         setProduct(product);

@@ -4,11 +4,10 @@ import { isArray, isEmpty } from "lodash";
 import Head from "next/head";
 import CategoryCard from "../components/common/CategoryCard";
 import { useState } from "react";
+import { NEXT_PUBLIC_HOST } from "@/env/env";
 
 export const getServerSideProps = async () => {
-  const res = await fetch(
-    `http://${process.env.NEXT_PUBLIC_HOST}/api/getAllProducts`,
-  );
+  const res = await fetch(`${NEXT_PUBLIC_HOST}/api/getAllProducts`);
   const products = await res.json();
   return { props: { products } };
 };
