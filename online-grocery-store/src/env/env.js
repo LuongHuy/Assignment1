@@ -1,9 +1,9 @@
 const env = process.env.NODE_ENV;
-if (env == "development") {
-  // do something
-} else if (env == "production") {
-  // do something
-}
+// if (env == "development") {
+
+// } else if (env == "production") {
+
+// }
 
 export const NEXT_PUBLIC_HOST =
   env === "development"
