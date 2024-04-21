@@ -6,6 +6,7 @@ import { useDisclosure } from "@mantine/hooks";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import InfomationCheck from "../components/cart/InfomationConfirm";
+import { NEXT_PUBLIC_HOST } from "@/env/env";
 
 const ShoppingCart = () => {
   const { cart, addProduct, subtractProduct, removeProduct, emptyCart } =
@@ -49,13 +50,10 @@ const ShoppingCart = () => {
       <Modal opened={isOpened} onClose={close} title="Delivery Information">
         <InfomationCheck
           onSubmit={async () => {
-            await fetch(
-              `http://${process.env.NEXT_PUBLIC_HOST}/api/updateProducts`,
-              {
-                method: "POST",
-                body: JSON.stringify(cart),
-              },
-            );
+            await fetch(`${NEXT_PUBLIC_HOST}/api/updateProducts`, {
+              method: "POST",
+              body: JSON.stringify(cart),
+            });
             emptyCart();
             close();
             router.push("/confirmation");

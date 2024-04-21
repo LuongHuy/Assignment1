@@ -5,6 +5,7 @@ import { isArray, isEmpty } from "lodash";
 import Head from "next/head";
 import CategoryCard from "../components/common/CategoryCard";
 import { useRouter } from "next/router";
+import { NEXT_PUBLIC_HOST } from "@/env/env";
 
 const SearchPage = () => {
   const router = useRouter();
@@ -23,7 +24,7 @@ const SearchPage = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://${process.env.NEXT_PUBLIC_HOST}/api/findProducts?query=${query}`,
+          `${NEXT_PUBLIC_HOST}/api/findProducts?query=${query}`,
         );
         const products = await response.json();
         setProducts(products);
